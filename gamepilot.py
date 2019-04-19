@@ -7,7 +7,7 @@ Created on Thu Apr 18 11:50:54 2019
 
 #game pilot EP1
 import time
-import random as rd
+import random
 inventario = []
 print("Você se encontra no meio do saguão de sua universidade, o Insper.")
 nome_jogador = input("Qual o seu nome, honorável sofredor universitário? >>")
