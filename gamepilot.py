@@ -19,7 +19,7 @@ print("Você também pode ignora-los e ir à biblioteca.\n\nIr à biblioteca = b
 
 def escolha1():
     resposta1 = input("O que deseja fazer, {}? >>".format(nome_jogador)).strip
-    while resposta1 != "biblioteca" and resposta1 != "cinema":
+    while resposta1 != ("biblioteca") and resposta1 != ("cinema"):
         print("Resposta inválida!")
         resposta1 = input("O que deseja fazer, {}? >>".format(nome_jogador)).strip
     if resposta1 == "biblioteca":
