@@ -4,6 +4,7 @@ Created on Thu Apr 18 11:50:54 2019
 
 @author: Aspire_andre
 """
+inventario = []
 #Funções utilizadas no game
 def pergunta():
     perg=input("O que deseja fazer, \033[35m{}\033[m? >>".format(nome_jogador)).strip().lower()
@@ -26,8 +27,8 @@ def funbiblioteca():
     time.sleep(2)
     print('\033[36mToshi\033[m:Oi \033[35m{}\033[m! Tudo bem?'.format(nome_jogador))
     time.sleep(2)
-    print('\033[36mToshi\033[m:Como vai a confecção da EP1?\n\nEstá indo muito bem, vou tirar um 10! = mentir \nEntão professor...eu não fiz nada ainda, posso entregar outro dia? = verdade')
-def funmentir():
+    print('\033[36mToshi\033[m:Como vai a confecção da EP1?\n\nEstá indo muito bem, vou tirar um 10! = mentira \nEntão professor...eu não fiz nada ainda, posso entregar outro dia? = verdade')
+def funmentira():
     print('\033[36mToshi\033[m:Que bom!')
     time.sleep(2)
     print('\033[36mToshi\033[m:Espero então que sua EP1 esteja fantástica \033[35m{}\033[m!'.format(nome_jogador))
@@ -50,6 +51,8 @@ def funverdade():
     print('Após ficar algum tempo parado pensando na frente da biblioteca, voce nota a existência de um pen-drive no chão, onde teve sua conversa com o \033[36mToshi\033[m')
     time.sleep(2)
     print('Voce pega o \033[32mPen-Drive\033[m e entra na biblioteca...')
+    inventario.append("pen-drive")
+    print("Pen-drive adicionado ao inventário")
 def funfilme():
     print('\033[36mBárbara\033[m se despede, e voce entra na sessão do filme com seus amigos')
     time.sleep(4)
@@ -70,7 +73,6 @@ def funesperar():
 #game pilot EP1
 import time
 import random
-inventario = []
 print("Você se encontra no meio do saguão de sua universidade, o Insper.")
 nome_jogador = input("Qual o seu nome, honorável sofredor universitário? >>")
 time.sleep(1)
@@ -84,10 +86,18 @@ print("Você também pode ignora-los e ir à biblioteca.\n\nIr à biblioteca = b
 resposta1 = pergunta()
 print(resposta1)
 while resposta1 != "biblioteca" and resposta1 != "cinema":
-    print("Resposta Inválida!1")
+    print("Resposta Inválida!")
     resposta1 == pergunta()
 if resposta1 == "biblioteca":
     funbiblioteca()
+    resposta2 = pergunta()
+    while resposta2 != "mentira" and resposta2 != "verdade":
+        print("Resposta Inválida!")
+        resposta2 = pergunta()
+    if resposta2 == "mentira":
+        funmentira()
+    elif resposta2 == "verdade":
+        funverdade()
 elif resposta1 == "cinema":
     funcinema()
     
