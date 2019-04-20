@@ -6,7 +6,7 @@ Created on Thu Apr 18 11:50:54 2019
 """
 #Funções utilizadas no game
 def pergunta():
-    perg=input("O que deseja fazer, \033[35m{}\033[m? >>".format(nome_jogador)).strip
+    perg=input("O que deseja fazer, \033[35m{}\033[m? >>".format(nome_jogador)).strip().lower()
     return perg
 def funcinema():
     print('Voce alcança seus amigos e parte para o cinema')
@@ -19,10 +19,10 @@ def funcinema():
     time.sleep(2)
     print('\033[36mBárbara\033[m:Voce não acha melhor entrega-la ao invés de ver o filme?\n\nVoltar à biblioteca = biblioteca \nEntrar na sessão do filme = filme')
 def funbiblioteca():
-    print('Voce parte em direção à biblioteca do Insper')
-    print('Na entrada da biblioteca voce se depara com um ser, cuja aura de programação é muito forte!')
-    print('Voce pensa: É mais de 8000!')
-    print('Sem muito esforço, voce reconhece que este ser é o \033[36mToshi\033[m!')
+    print('Você parte em direção à biblioteca do Insper')
+    print('Na entrada da biblioteca você sente um distúrbio na força. Uma aura imensa se revela!')
+    print('Você pensa: Que imenso poder de computação!!! É evidente, a única pessoa capaz de emanar algo assim é o...')
+    print('Você se depara com \033[36mToshi\033[m, seu professor de programação.')
     time.sleep(2)
     print('\033[36mToshi\033[m:Oi \033[35m{}\033[m! Tudo bem?'.format(nome_jogador))
     time.sleep(2)
@@ -79,17 +79,15 @@ print("Você se lembra que está atrasado na entrega de seu EP de Design de soft
 print("Você vê seus amigos que já terminaram o projeto saindo para ir ao cinema assistir Guerra Finita:Começato.")
 print("Você também pode ignora-los e ir à biblioteca.\n\nIr à biblioteca = biblioteca \nIr com seus amigos ao cinema = cinema") 
 
-def escolha1():
-    resposta1 = pergunta()
-    while resposta1 != ("biblioteca") and resposta1 != ("cinema"):
-        print("Resposta inválida!")
-        resposta1 = pergunta()
-    if resposta1 == "biblioteca":
-        #funcao biblioteca
-        print("Você se dirige à biblioteca")
-    elif resposta1 == "cinema":
-        #funcao cinema
-        print("você alcança seus amigos e parte para o cinema")
-    return resposta1
+
     
-escolha1()
+resposta1 = pergunta()
+print(resposta1)
+while resposta1 != "biblioteca" and resposta1 != "cinema":
+    print("Resposta Inválida!1")
+    resposta1 == pergunta()
+if resposta1 == "biblioteca":
+    funbiblioteca()
+elif resposta1 == "cinema":
+    funcinema()
+    
