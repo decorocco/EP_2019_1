@@ -4,7 +4,11 @@ Created on Thu Apr 18 11:50:54 2019
 
 @author: Aspire_andre
 """
+<<<<<<< HEAD
+#Features
+=======
 #Listas
+>>>>>>> dc794daefef1ce96d714cd1f35229a6c0fb33a0d
 inventario = []
 locais_visitados = []
 #Funções utilizadas no game
@@ -86,7 +90,23 @@ def funusar():
 def funsmash():
     print("Ao chegar no quarto andar, voce se depara com alguns veteranos jogando smash no wii que existe no meio da sala")
     print("Um dos veteranos te afronta, pois não gosta da sua presença no local e te chama para uma luta")   
-    
+def funbiblioteca2():
+    print("Ao entrar na biblioteca voce acha uma sala de estudos vazia e decide entrar para utiliza-la")
+    print("Voce não consegue se concentrar pois a única coisa que vem em sua cabeça é o que seus amigos podem estar fazendo de divertido, e o quanto voce não quer fazer a EP")
+    print("Voce se sente estranho por alguns segundos...")
+    time.sleep(3)
+    print("Voce passa mal e acaba desmaiando, já que não se alimentou durante o dia, e saiu sem comer de casa para não se atrasar para a aula")
+    time.sleep(2)
+    print("Enquanto vaga por um lugar vazio e desconhecido no qual voce se encontra, voce novamente sente uma aura programadora muito forte, porém diferente da aura sentida anteriormente...")
+    time.sleep(3)
+    print("Voce vê de longe 2 figuras distorcidas, que se aproximam aos poucos de onde voce está")
+    print("Agora que estão em sua frente, voce reconhece as duas figuras que estão emanando a aura intensa que voce tinha sentido...")
+    time.sleep(2)
+    print("Voce encontra \033[36mBill Gates\033[m!")
+    time.sleep(1)
+    print("\033[36mBill Gates\033[m:Oi \033[35m{}\033[m, por que voce esta tão aflito com a EP de programação?".format(nome_jogador))
+    time.sleep(2)
+    print("\033[36mBill Gates\033[m:Não precisa se preocupar tanto com essas coisas")
     
 #game pilot EP1
 import time
