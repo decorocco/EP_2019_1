@@ -6,9 +6,13 @@ Created on Thu Apr 18 11:50:54 2019
 """
 #Listas
 inventario = []
+locais_visitados = []
 #Funções utilizadas no game
 def pergunta():
     perg=input("O que deseja fazer, \033[35m{}\033[m? >>".format(nome_jogador)).strip().lower()
+    return perg
+def perguntatp():
+    perg=input("Para onde deseja teleportar, \033[35m{}\033[m? >>".format(nome_jogador)).strip().lower()
     return perg
 def funcinema():
     print('Voce alcança seus amigos e parte para o cinema')
@@ -102,6 +106,8 @@ while resposta1 != "biblioteca" and resposta1 != "cinema":
     print("Resposta Inválida!")
     resposta1 = pergunta()
 if resposta1 == "biblioteca":
+    if "biblioteca" not in locais_visitados:
+        locais_visitados.append("biblioteca")
     funbiblioteca()
     resposta2 = pergunta()
     while resposta2 != "mentira" and resposta2 != "verdade":
@@ -112,6 +118,8 @@ if resposta1 == "biblioteca":
     elif resposta2 == "verdade":
         funverdade()
 elif resposta1 == "cinema":
+    if "cinema" not in locais_visitados:
+        locais_visitados.append("cinema")
     funcinema()
     resposta3 = pergunta()
     while resposta3 != "biblioteca" and resposta3 != "filme":
@@ -143,6 +151,15 @@ elif resposta1 == "cinema":
                     funsmash()
             elif resposta5 == "usar":
                 funusar()
+                print("Estes são os lugares para quais você pode teleportar: {}".format(locais_visitados))
+                respostatp = perguntatp()
+                while respostatp not in locais_visitados:
+                    print("Local não reconhecido")
+                    respostatp = perguntatp()
+                if respostatp == "biblioteca":
+                    funbiblioteca()
+                elif respostatp == "cinema":
+                    funcinema()
         elif resposta4 == "insper":
             funinsper()
             resposta6 = pergunta()
