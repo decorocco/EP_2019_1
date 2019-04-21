@@ -61,9 +61,10 @@ def funverdade():
 def funfilme():
     print('\033[36mBárbara\033[m se despede, e voce entra na sessão do filme com seus amigos')
     time.sleep(4)
-    print('Após 3 horas de filme, seus olhos estão sangrando de tão bom que a experiência foi!')
+    print('Após 3 horas de filme, seus olhos estão sangrando de tão bom que a experiência foi! Você não vê a hora de assistir a cena pós-créditos')
     time.sleep(1)
-    print('Um de seus amigos sugere que voces saiam da sala e voltem para o Insper\n\nVoltar para o Insper = insper \nEsperar os créditos = esperar')
+    print("É ai que vem uma ideia à sua cabeça. Você poderia tentar adiar a entrega da EP por meio de um atestado médico!)
+    print('Um de seus amigos sugere que voces saiam da sala e voltem para o Insper\n\nVoltar para o Insper = insper \nEsperar os créditos = esperar\nIr ao hospital para tentar pegar um atestado = atestado')
 def funesperar():
     print('Vocês esperam as cenas pós-créditos como em todos os filmes da Mervel')
     print('Quando estão saindo da sala de cinema, você nota algo estranho atrás da tela de cinema...')
@@ -94,9 +95,9 @@ print("Você se encontra no meio do saguão de sua universidade, o Insper.")
 nome_jogador = input("Qual o seu nome, honorável sofredor universitário? >>")
 time.sleep(1)
 print()
-print("Você se lembra que está atrasado na entrega de seu EP de Design de software, mas você não está a fim de termina-lo.")
+print("Você se lembra que está muito atrasado na entrega de seu EP de Design de software, mas você não está a fim de termina-lo.")
 print("Você vê seus amigos que já terminaram o projeto saindo para ir ao cinema assistir Guerra Finita:Começato.")
-print("Você também pode ignora-los e ir à biblioteca.\n\nIr à biblioteca = biblioteca \nIr com seus amigos ao cinema = cinema") 
+print("Você pode ignora-los e ir à biblioteca ou segui-los.\n\nIr à biblioteca = biblioteca \nIr com seus amigos ao cinema = cinema") 
 
 
     
@@ -163,12 +164,15 @@ elif resposta1 == "cinema":
         elif resposta4 == "insper":
             funinsper()
             resposta6 = pergunta()
-            while resposta6 != "biblioteca" and resposta6 != "smash":
+            while resposta6 != "biblioteca" and resposta6 != "smash" and resposta6 != "atestado":
                 print("Resposta Inválida")
                 resposta6 = pergunta()
             if resposta6 == "biblioteca":
                 funbiblioteca()
             elif resposta6 == "smash":
                 funsmash()
+        elif resposta4 == "atestado":
+            funhospital()
+            
     
     
