@@ -42,7 +42,7 @@ def funverdade():
     time.sleep(4)
     print('\033[36mToshi\033[m:Infelizmente isso não é possível \033[35m{}\033[m'.format(nome_jogador))
     time.sleep(2)
-    print('\033[36mToshi\033[m:Voce não devia ter procastinado para fazer está EP.')
+    print('\033[36mToshi\033[m:Voce não devia ter procastinado para fazer esta EP.')
     time.sleep(2)
     print('\033[36mToshi\033[m:Agora voce vai ter que arcar com as consequências!')
     time.sleep(1)
@@ -53,7 +53,7 @@ def funverdade():
     time.sleep(2)
     print('Voce pega o \033[32mPen-Drive\033[m e entra na biblioteca...')
     inventario.append("pen-drive")
-    print("Pen-drive adicionado ao inventário!")
+    print("\033[32mPen-drive adicionado ao inventário!\033[m")
 def funfilme():
     print('\033[36mBárbara\033[m se despede, e voce entra na sessão do filme com seus amigos')
     time.sleep(4)
