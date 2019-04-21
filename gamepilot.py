@@ -4,7 +4,11 @@ Created on Thu Apr 18 11:50:54 2019
 
 @author: Aspire_andre
 """
+<<<<<<< HEAD
 #Features
+=======
+#Listas
+>>>>>>> dc794daefef1ce96d714cd1f35229a6c0fb33a0d
 inventario = []
 #Funções utilizadas no game
 def pergunta():
@@ -57,14 +61,14 @@ def funverdade():
 def funfilme():
     print('\033[36mBárbara\033[m se despede, e voce entra na sessão do filme com seus amigos')
     time.sleep(4)
-    print('Após 3 horas de filme, seus olhos estão sangrando de tão bom que ele consegue ser!')
+    print('Após 3 horas de filme, seus olhos estão sangrando de tão bom que a experiência foi!')
     time.sleep(1)
     print('Um de seus amigos sugere que voces saiam da sala e voltem para o Insper\n\nVoltar para o Insper = insper \nEsperar os créditos = esperar')
 def funesperar():
-    print('Voces esperam as cenas pós-créditos como em todos os filmes da Marvel')
-    print('Quando estão saindo da sala de cinema, voce nota algo estranho atrás da tela de cinema...')
+    print('Vocês esperam as cenas pós-créditos como em todos os filmes da Mervel')
+    print('Quando estão saindo da sala de cinema, você nota algo estranho atrás da tela de cinema...')
     time.sleep(2)
-    print('Após decidir verificar, voce descobre uma sala secreta atrás da tela!')
+    print('Após decidir verificar, você descobre uma sala secreta atrás da tela!')
     print('É uma sala com uma máquina enorme e estranha em seu interior, com muitos cabos elétricos e tomadas')
     time.sleep(2)
     print('Uma \033[31mSala de Teletransporte\033[m!')
@@ -78,7 +82,7 @@ def funusar():
     print("Voce decide tentar usar a máquina de teletransporte")
     time.sleep(2)
     print("Ao chegar mais perto do painel da máquina, é possível ler a seguinte menssagem no monitor:")
-    print("Insira exatamente o nome do local para qual voce deseja se teletransportar:") 
+    print("Insira o nome do local para qual voce deseja se teletransportar:") 
 def funsmash():
     print("Ao chegar no quarto andar, voce se depara com alguns veteranos jogando smash no wii que existe no meio da sala")
     print("Um dos veteranos te afronta, pois não gosta da sua presença no local e te chama para uma luta")   
@@ -102,7 +106,6 @@ def funbiblioteca2():
     
 #game pilot EP1
 import time
-import random
 print("Você se encontra no meio do saguão de sua universidade, o Insper.")
 nome_jogador = input("Qual o seu nome, honorável sofredor universitário? >>")
 time.sleep(1)
