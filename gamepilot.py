@@ -155,10 +155,14 @@ def funbatalha():
         print("Oh não! Você não tem recursos suficientes para vencer de Toshi, o Magnífico")
         print ("GAME OVER")
         print ("FINAL 2/3")
+        time.sleep(4)
+        print("Muito obrigado por jogar \033[35m{}\033[m!".format(nome_jogador))
     else: 
         print("\033[36mToshi\033[m: C-Como?? Não é possível!!! Parece que vou ter que realmente adiar a entrega. Você venceu, batata frita.")
         print("PARABÉNS, VOCÊ VENCEU")
         print("FINAL 1/3")
+        time.sleep(4)
+        print("Muito obrigado por jogar \033[35m{}\033[m!".format(nome_jogador))
 def funhospital():
     print("Você foi para o hospital mais próximo com muita esperança em seu coração")
     print("Ao chegar lá você encontra um \033[36mMédico\033[m!")
@@ -173,7 +177,21 @@ def funhospital():
     time.sleep(2)
     print("\033[36mMédico\033[m:AHHHH, agora faz sentido!")
     time.sleep(2)
-    print("\033[36mMédico\033[m:Mas então, o que você precisa?\n\nPreciso de um atestado porque estou com conjuntivite = mentir \nFalar que voce quer atestado para não ter que entregar um trabalho = verdade")      
+    print("\033[36mMédico\033[m:Mas então, o que você precisa?")    
+    time.sleep(2)
+    print("Você diz precisar de um atestado")
+    time.sleep(2)
+    print("\033[36mMédico\033[m:Ah, claro! Tome aqui seu atestado!")
+    inventario.append("Atestado Médico")
+    print("\033[32mAtestado Médico foi adicionado ao inventário!\033[m")
+    time.seep(3)
+    print("Parabéns!!!")
+    print("Você conseguiu um atestado! Este item faz com que voce possa entregar a EP outro dia!")
+    time.sleep(4)
+    print("Você ganhou!!!")
+    print("FINAL 3/3")
+    time.sleep(4)
+    print("Muito obrigado por jogar \033[35m{}\033[m!".format(nome_jogador))
         
     
 #game pilot EP1
