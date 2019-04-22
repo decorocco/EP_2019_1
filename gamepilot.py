@@ -128,7 +128,7 @@ def funbatalha():
         print("Embora a pressão exercida por Toshi é ameaçadora, você se enche de determinação e confiança")
     print("Toshi assume sua pose de batalha e você faz o mesmo")
     time.sleep(3)
-    while toshi_hp > 0 and player_hp > 0:
+    while toshi_hp > 0 and player_hp > 0 and len(inventario) == 0:
         print("==============================================================================================================================")
         print("Toshi --> HP = {}".format(toshi_hp))
         print("{0} --> HP = {1}".format(nome_jogador,player_hp))
@@ -143,7 +143,7 @@ def funbatalha():
             print("\033[36mToshi\033[m: Ele é um caso à parte!")
             print("Mesmo Toshi estando certo ele leva 15 de dano!")
             print("Você leva 10 de dano!")
-            player_hp += -10
+            player_hp += -10,
             toshi_hp += -15
             possiveis_ataques.remove("Usar Benção do Bill Gates como exemplo de sucesso = gates")
         elif acao_batalha == "chantagem":
@@ -151,9 +151,8 @@ def funbatalha():
             print("Você vê surpresa e desprezo nos olhos de Toshi. Toshi leva 15 de dano!")
             toshi_hp += -15
             possiveis_ataques.remove("Usar Pen drive como chantagem = chantagem")
-        elif len(possiveis_ataques) == 0 and toshi_hp > 0:
-            print("Oh não! Você não tem recursos suficientes para vencer de Toshi, o Magnífico")
     if toshi_hp > 0:
+        print("Oh não! Você não tem recursos suficientes para vencer de Toshi, o Magnífico")
         print ("GAME OVER")
         print ("FINAL 2/3")
     else: 
