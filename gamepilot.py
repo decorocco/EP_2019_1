@@ -7,6 +7,10 @@ Created on Thu Apr 18 11:50:54 2019
 #features
 inventario = []
 locais_visitados = []
+toshi_hp = 30
+player_hp = 15
+possiveis_ataques = []
+
 #Funções utilizadas no game
 def pergunta():
     perg=input("O que deseja fazer, \033[35m{}\033[m? >>".format(nome_jogador)).strip().lower()
@@ -56,7 +60,7 @@ def funverdade():
     print('Após ficar algum tempo parado pensando na frente da biblioteca, voce nota a existência de um pen-drive no chão, onde teve sua conversa com o \033[36mToshi\033[m')
     time.sleep(2)
     print('Voce pega o \033[32mPen-Drive\033[m e entra na biblioteca...')
-    inventario.append("pen-drive")
+    inventario.append("Pen-drive")
     print("\033[32mPen-drive adicionado ao inventário!\033[m")
 def funfilme():
     print('\033[36mBárbara\033[m se despede, e voce entra na sessão do filme com seus amigos')
@@ -98,8 +102,8 @@ def funbiblioteca2():
     time.sleep(2)	
     print("Enquanto vaga por um lugar vazio e desconhecido no qual você se encontra, você novamente sente uma aura programadora muito forte, porém diferente da aura sentida anteriormente...")	
     time.sleep(3)	
-    print("Você vê de longe 2 figuras distorcidas, que se aproximam aos poucos de onde voce está")	
-    print("Agora que estão em sua frente, voce reconhece as duas figuras que estão emanando a aura intensa que voce tinha sentido...")	
+    print("Você vê de longe uma figura distorcida, que se aproxima aos poucos de onde voce está")	
+    print("Agora que está em sua frente, você reconhece a figura que está emanando a aura intensa que voce tinha sentido...")	
     time.sleep(2)	
     print("Você encontra \033[36mBill Gates\033[m!")	
     time.sleep(1)	
@@ -112,7 +116,52 @@ def funbiblioteca2():
     print("\033[36mBill Gates\033[m:Por isso consegui criar a Microsoft, a procastinação é a chave do sucesso \033[35m{}\033[m!")	
     inventario.append("Benção do Bill Gates")	
     print("\033[32mBenção do Bill Gates adicionada ao inventário!\033[m")
-    
+def funbatalha():
+    toshi_hp = 30
+    player_hp = 15
+    if "Pen-drive" in inventario:
+        possiveis_ataques.append("Usar Pen drive como chantagem = chantagem")
+    if "Benção do Bill Gates" in inventario:
+        possiveis_ataques.append("Usar Benção do Bill Gates como exemplo de sucesso = gates")
+    print("Você se depara com Toshi e vocês dois sabem que essa batalha é inevitavel para o adiamento da EP")
+    if len(inventario) > 2:
+        print("Embora a pressão exercida por Toshi é ameaçadora, você se enche de determinação e confiança")
+    print("Toshi assume sua pose de batalha e você faz o mesmo")
+    time.sleep(3)
+    while toshi_hp > 0 and player_hp > 0:
+        print("==============================================================================================================================")
+        print("Toshi --> HP = {}".format(toshi_hp))
+        print("{0} --> HP = {1}".format(nome_jogador,player_hp))
+        print("Possíveis ataques:")
+        print(possiveis_ataques)
+        acao_batalha = pergunta()
+        while acao_batalha != "gates" and acao_batalha != "chantagem":
+            print("Resposta Inválida")
+            acao_batalha = pergunta()
+        if acao_batalha == "gates":
+            print("\033[35m{}\033[m: Eu falei com o Bill Gates(gatesinho, para os próximos) e ele disse que saiu da faculdade e ainda se deu bem!".format(nome_jogador))
+            print("\033[36mToshi\033[m: Ele é um caso à parte!")
+            print("Mesmo Toshi estando certo ele leva 15 de dano!")
+            print("Você leva 10 de dano!")
+            player_hp += -10
+            toshi_hp += -15
+            possiveis_ataques.remove("Usar Benção do Bill Gates como exemplo de sucesso = gates")
+        elif acao_batalha == "chantagem":
+            print("\033[35m{}\033[m: Se você não adiar a EP eu vou vazar todas as suas provas futuras!".format(nome_jogador))
+            print("Você vê surpresa e desprezo nos olhos de Toshi. Toshi leva 15 de dano!")
+            toshi_hp += -15
+            possiveis_ataques.remove("Usar Pen drive como chantagem = chantagem")
+        elif len(possiveis_ataques) == 0 and toshi_hp > 0:
+            print("Oh não! Você não tem recursos suficientes para vencer de Toshi, o Magnífico")
+    if toshi_hp > 0:
+        print ("GAME OVER")
+        print ("FINAL 2/3")
+    else: 
+        print("\033[36mToshi\033[m: C-Como?? Não é possível!!! Parece que vou ter que realmente adiar a entrega. Você venceu, batata frita.")
+        print("PARABÉNS, VOCÊ VENCEU")
+        print("FINAL 1/3")
+        
+        
     
 #game pilot EP1
 import time
@@ -144,6 +193,7 @@ if resposta1 == "biblioteca":
     elif resposta2 == "verdade":
         funverdade()
     funbiblioteca2()
+    funbatalha()
 elif resposta1 == "cinema":
     if "cinema" not in locais_visitados:
         locais_visitados.append("cinema")
