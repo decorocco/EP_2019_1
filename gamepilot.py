@@ -4,12 +4,18 @@ Created on Thu Apr 18 11:50:54 2019
 
 @author: Aspire_andre
 """
+#Bibliotecas
+import random
+import time
+
 #features
 inventario = []
 locais_visitados = []
 toshi_hp = 30
 player_hp = 15
 possiveis_ataques = []
+acertar_ataque=random.randint(0, 10)
+acaso_encontro=random.randint(0,1)
 
 #Funções utilizadas no game
 def pergunta():
@@ -113,9 +119,11 @@ def funbiblioteca2():
     time.sleep(2)	
     print("\033[36mBill Gates\033[m:Acredite em mim, é nos momentos de ócio que se tem as melhores ideias!")	
     time.sleep(2)	
-    print("\033[36mBill Gates\033[m:Por isso consegui criar a Microsoft, a procastinação é a chave do sucesso \033[35m{}\033[m!")	
+    print("\033[36mBill Gates\033[m:Por isso consegui criar a Microsoft, a procastinação é a chave do sucesso \033[35m{}\033[m!".format(nome_jogador))	
     inventario.append("Benção do Bill Gates")	
     print("\033[32mBenção do Bill Gates adicionada ao inventário!\033[m")
+    time.sleep(2)
+    print("Voce acorda do seu sonho")
 def funbatalha():
     toshi_hp = 30
     player_hp = 15
@@ -124,11 +132,11 @@ def funbatalha():
     if "Benção do Bill Gates" in inventario:
         possiveis_ataques.append("Usar Benção do Bill Gates como exemplo de sucesso = gates")
     print("Você se depara com Toshi e vocês dois sabem que essa batalha é inevitavel para o adiamento da EP")
-    if len(inventario) > 2:
+    if len(inventario) == 2:
         print("Embora a pressão exercida por Toshi é ameaçadora, você se enche de determinação e confiança")
     print("Toshi assume sua pose de batalha e você faz o mesmo")
     time.sleep(3)
-    while toshi_hp > 0 and player_hp > 0 and len(inventario) == 0:
+    while toshi_hp > 0 and player_hp > 0 and len(possiveis_ataques)>0:
         print("==============================================================================================================================")
         print("Toshi --> HP = {}".format(toshi_hp))
         print("{0} --> HP = {1}".format(nome_jogador,player_hp))
@@ -143,16 +151,16 @@ def funbatalha():
             print("\033[36mToshi\033[m: Ele é um caso à parte!")
             print("Mesmo Toshi estando certo ele leva 15 de dano!")
             print("Você leva 10 de dano!")
-            player_hp += -10,
+            player_hp += -10
             toshi_hp += -15
             possiveis_ataques.remove("Usar Benção do Bill Gates como exemplo de sucesso = gates")
         elif acao_batalha == "chantagem":
             print("\033[35m{}\033[m: Se você não adiar a EP eu vou vazar todas as suas provas futuras!".format(nome_jogador))
-            print("Você vê surpresa e desprezo nos olhos de Toshi. Toshi leva 15 de dano!")
+            print("Você vê surpresa e desprezo nos olhos de \033[36mToshi\033[m. \033[36mToshi\033[m leva 15 de dano!")
             toshi_hp += -15
             possiveis_ataques.remove("Usar Pen drive como chantagem = chantagem")
     if toshi_hp > 0:
-        print("Oh não! Você não tem recursos suficientes para vencer de Toshi, o Magnífico")
+        print("Oh não! Você não tem recursos suficientes para vencer de \033[36mToshi\033[m, o Magnífico")
         print ("GAME OVER")
         print ("FINAL 2/3")
         time.sleep(4)
@@ -184,7 +192,7 @@ def funhospital():
     print("\033[36mMédico\033[m:Ah, claro! Tome aqui seu atestado!")
     inventario.append("Atestado Médico")
     print("\033[32mAtestado Médico foi adicionado ao inventário!\033[m")
-    time.seep(3)
+    time.sleep(3)
     print("Parabéns!!!")
     print("Você conseguiu um atestado! Este item faz com que voce possa entregar a EP outro dia!")
     time.sleep(4)
@@ -192,10 +200,62 @@ def funhospital():
     print("FINAL 3/3")
     time.sleep(4)
     print("Muito obrigado por jogar \033[35m{}\033[m!".format(nome_jogador))
-        
+def fundescobrir():
+    print("Após acordar, você decide checar os contúdos do pen-drive que você encontrou na entrada da biblioteca")
+    print("Você se espanta com o que descobre ao mexer nos arquivos que existem dentro do dispositivo")
+    time.sleep(2)
+    print("Você se espanta ao achar os arquivos das futuras provas de Deisgn de Software!")
+    print("É o pen-drive do \033[36mToshi\033[m!")
+    time.sleep(2)
+    print("Após pensar um pouco, você chega à conclusão de que isto pode ser útil para conseguir adiar a entrega da EP!")
+    
+def funcontbi():
+    if "biblioteca" not in locais_visitados:
+        locais_visitados.append("biblioteca")
+    funbiblioteca()
+    resposta2 = pergunta()
+    while resposta2 != "mentira" and resposta2 != "verdade":
+        print("Resposta Inválida!")
+        resposta2 = pergunta()
+    if resposta2 == "mentira":
+        funmentira()
+        funbiblioteca2()
+    elif resposta2 == "verdade":
+        funverdade()
+        funbiblioteca2()
+        fundescobrir()
+    funbatalha()
+    
+def funencontro():
+    player_hp = 15
+    print("Um veterano selvagem aparece!")
+    print("Ele quer sair no soco com você!")
+    print("Você pode ataca-lo ou fugir")
+    print("Já que bixo nem é gente, seu sucesso na briga é aleatório!\n\nSair no soco com o veterano = ataque \nEnsebar as canelas = fugir")
+    decisao = pergunta()
+    while decisao != "fugir" and decisao != "ataque":
+        print("Resposta Inválida")
+        decisao = pergunta()
+    if decisao == "fugir":
+        print("Você ensebou as canelas e saiu vazado")
+    elif decisao == "ataque":
+        if acertar_ataque < 4:
+            print("Você errou feio, errou rude!")
+            print("Você saiu com um olho roxo e com seu orgulho ferido ;-;")
+            player_hp += -5
+            print("Você levou 5 de dano")
+            print("Você está com {} de hp!".format(player_hp))
+        else:
+            print("Você quem manja mais de Python, chupa vet")
+            print("Você ganhou a luta! xD")
+            player_hp += 10
+            print("Você ganhou 10 hp como bônus por vencer desse bobão!")
+            print("Você está com {} de hp!".format(player_hp))
+def funacaso():
+    if acaso_encontro == 1:
+        funencontro()     
     
 #game pilot EP1
-import time
 print("Você se encontra no meio do saguão de sua universidade, o Insper.")
 nome_jogador = input("Qual o seu nome, honorável sofredor universitário? >>")
 time.sleep(1)
@@ -212,19 +272,9 @@ while resposta1 != "biblioteca" and resposta1 != "cinema":
     print("Resposta Inválida!")
     resposta1 = pergunta()
 if resposta1 == "biblioteca":
-    if "biblioteca" not in locais_visitados:
-        locais_visitados.append("biblioteca")
-    funbiblioteca()
-    resposta2 = pergunta()
-    while resposta2 != "mentira" and resposta2 != "verdade":
-        print("Resposta Inválida!")
-        resposta2 = pergunta()
-    if resposta2 == "mentira":
-        funmentira()
-    elif resposta2 == "verdade":
-        funverdade()
-    funbiblioteca2()
-    funbatalha()
+    funacaso()
+    time.sleep(3)
+    funcontbi()
 elif resposta1 == "cinema":
     if "cinema" not in locais_visitados:
         locais_visitados.append("cinema")
@@ -234,11 +284,11 @@ elif resposta1 == "cinema":
         print('Resposta Inválida!')
         resposta3 = pergunta()
     if resposta3 == "biblioteca":
-        funbiblioteca()
+        funcontbi()
     elif resposta3 == "filme":
         funfilme()
         resposta4 = pergunta()
-        while resposta4 != "insper" and resposta4 != "esperar":
+        while resposta4 != "insper" and resposta4 != "esperar" and resposta4 != "atestado":
             print("Resposta Inválida!")
             resposta4 = pergunta()
         if resposta4 == "esperar":
@@ -254,7 +304,7 @@ elif resposta1 == "cinema":
                     print("Resposta Inválida")
                     resposta5b = pergunta()
                 if resposta5b == "biblioteca":
-                    funbiblioteca()
+                    funcontbi()
                 elif resposta5b == "smash":
                     funsmash()
             elif resposta5 == "usar":
@@ -265,17 +315,17 @@ elif resposta1 == "cinema":
                     print("Local não reconhecido")
                     respostatp = perguntatp()
                 if respostatp == "biblioteca":
-                    funbiblioteca()
+                    funcontbi
                 elif respostatp == "cinema":
                     funcinema()
         elif resposta4 == "insper":
             funinsper()
             resposta6 = pergunta()
-            while resposta6 != "biblioteca" and resposta6 != "smash" and resposta6 != "atestado":
+            while resposta6 != "biblioteca" and resposta6 != "smash":
                 print("Resposta Inválida")
                 resposta6 = pergunta()
             if resposta6 == "biblioteca":
-                funbiblioteca()
+                funcontbi()
             elif resposta6 == "smash":
                 funsmash()
         elif resposta4 == "atestado":
