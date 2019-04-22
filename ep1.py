@@ -2,7 +2,7 @@
 #
 # Alunos: 
 # - aluno A: Fulano da Silva, fulanos@insper.edu.br
-# - aluno B: Sicrano de Almeida, sicranoa1@insper.edu.br
+# - aluno B: Andre Barone Rocco, andrebr@al.insper.edu.br
 
 def carregar_cenarios():
     cenarios = {
@@ -40,7 +40,6 @@ def carregar_cenarios():
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
-
 def main():
     print("Na hora do sufoco!")
     print("------------------")
@@ -68,10 +67,8 @@ def main():
             game_over = True
         else:
 
-            # Aluno B: substitua este comentário e a linha abaixo pelo código
-            # para pedir a escolha do usuário.
-            escolha = ""
-
+            escolha = input("escolha das opções a seguir:{}\n>>".format(opcoes))
+            
             if escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
