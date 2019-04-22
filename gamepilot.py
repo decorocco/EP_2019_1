@@ -88,15 +88,13 @@ def funesperar():
 def funinsper():
     print("Voce retornou ao saguão do Insper")
     time.sleep(2)
-    print("Após pensar um pouco, voce realiza ter duas opções:\n\nIr para a biblioteca = biblioteca \nIr para o quarto andar do prédio 1 jogar smash = smash" )
+    print("Após pensar um pouco, você percebe nao ter nada a fazer além de ir à biblioteca.")
+    time.sleep(2)
 def funusar():
     print("Voce decide tentar usar a máquina de teletransporte")
     time.sleep(2)
     print("Ao chegar mais perto do painel da máquina, é possível ler a seguinte menssagem no monitor:")
     print("Insira o nome do local para qual voce deseja se teletransportar:") 
-def funsmash():
-    print("Ao chegar no quarto andar, voce se depara com alguns veteranos jogando smash no wii que existe no meio da sala")
-    print("Um dos veteranos te afronta, pois não gosta da sua presença no local e te chama para uma luta")
 def funbiblioteca2():
     print()
     print()	
@@ -299,14 +297,7 @@ elif resposta1 == "cinema":
                 resposta5 = pergunta()
             if resposta5 == "insper":
                 funinsper()
-                resposta5b = pergunta()
-                while resposta5b != "biblioteca" and resposta5b != "smash":
-                    print("Resposta Inválida")
-                    resposta5b = pergunta()
-                if resposta5b == "biblioteca":
-                    funcontbi()
-                elif resposta5b == "smash":
-                    funsmash()
+                funcontbi()
             elif resposta5 == "usar":
                 funusar()
                 print("Estes são os lugares para quais você pode teleportar: {}".format(locais_visitados))
@@ -315,19 +306,46 @@ elif resposta1 == "cinema":
                     print("Local não reconhecido")
                     respostatp = perguntatp()
                 if respostatp == "biblioteca":
-                    funcontbi
+                    funcontbi()
                 elif respostatp == "cinema":
                     funcinema()
+                    resposta3 = pergunta()
+                    while resposta3 != "biblioteca" and resposta3 != "filme":
+                        print('Resposta Inválida!')
+                        resposta3 = pergunta()
+                    if resposta3 == "biblioteca":
+                        funcontbi()
+                    elif resposta3 == "filme":
+                        funfilme()
+                        resposta4 = pergunta()
+                        while resposta4 != "insper" and resposta4 != "esperar" and resposta4 != "atestado":
+                            print("Resposta Inválida!")
+                            resposta4 = pergunta()
+                        if resposta4 == "esperar":
+                            funesperar()
+                            resposta5 = pergunta()
+                            while resposta5 != "insper" and resposta5 != "usar":
+                                print("Resposta Inválida!")
+                                resposta5 = pergunta()
+                            if resposta5 == "insper":
+                                funinsper()
+                                funcontbi()
+                            elif resposta5 == "usar":
+                                funusar()
+                                print("Estes são os lugares para quais você pode teleportar: {}".format(locais_visitados))
+                                respostatp = perguntatp()
+                                while respostatp not in locais_visitados:
+                                    print("Local não reconhecido")
+                                    respostatp = perguntatp()
+                                if respostatp == "biblioteca":
+                                    funcontbi()
+                                elif respostatp == "cinema":
+                                    print("Você não pode fazer isso duas vezes")
+                                    print("Você decide voltar à biblioteca")
+                                    funcontbi()
         elif resposta4 == "insper":
             funinsper()
-            resposta6 = pergunta()
-            while resposta6 != "biblioteca" and resposta6 != "smash":
-                print("Resposta Inválida")
-                resposta6 = pergunta()
-            if resposta6 == "biblioteca":
-                funcontbi()
-            elif resposta6 == "smash":
-                funsmash()
+            funcontbi()
         elif resposta4 == "atestado":
             funhospital()
             
