@@ -70,7 +70,7 @@ def main():
             game_over = True
         else:
 
-            escolha = input("escolha das opções a seguir:{}\n>>".format(opcoes))
+            escolha = input("escolha das opções a seguir:{}\nO que deseja fazer? >>".format(opcoes))
             
             if escolha in opcoes:
                 nome_cenario_atual = escolha
