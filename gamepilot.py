@@ -16,6 +16,8 @@ player_hp = 15
 possiveis_ataques = []
 acertar_ataque=random.randint(0, 10)
 acaso_encontro=random.randint(0,1)
+acertar_ataque2=random.randint(0, 10)
+acaso_encontro2=random.randint(0,1)
 
 #Funções utilizadas no game
 def pergunta():
@@ -183,8 +185,9 @@ def funhospital():
     time.sleep(2)
     print("\033[36mMédico\033[m:AHHHH, agora faz sentido!")
     time.sleep(2)
-    print("\033[36mMédico\033[m:Mas então, o que você precisa?")    
-    time.sleep(2)
+    print("\033[36mMédico\033[m:Mas então, o que você precisa?") 
+    
+def funhospital2():
     print("Você diz precisar de um atestado")
     time.sleep(2)
     print("\033[36mMédico\033[m:Ah, claro! Tome aqui seu atestado!")
@@ -244,14 +247,45 @@ def funencontro():
             print("Você levou 5 de dano")
             print("Você está com {} de hp!".format(player_hp))
         else:
-            print("Você quem manja mais de Python, chupa vet")
+            print("Você é quem manja mais de Python, chupa vet")
             print("Você ganhou a luta! xD")
             player_hp += 10
             print("Você ganhou 10 hp como bônus por vencer desse bobão!")
             print("Você está com {} de hp!".format(player_hp))
+            
 def funacaso():
     if acaso_encontro == 1:
-        funencontro()     
+        funencontro()
+
+def funencontro2():
+    player_hp = 15
+    print("Um veterano selvagem aparece!")
+    print("Ele quer sair no soco com você!")
+    print("Você pode ataca-lo ou fugir")
+    print("Já que bixo nem é gente, seu sucesso na briga é aleatório!\n\nSair no soco com o veterano = ataque \nEnsebar as canelas = fugir")
+    decisao = pergunta()
+    while decisao != "fugir" and decisao != "ataque":
+        print("Resposta Inválida")
+        decisao = pergunta()
+    if decisao == "fugir":
+        print("Você ensebou as canelas e saiu vazado")
+    elif decisao == "ataque":
+        if acertar_ataque2 < 6:
+            print("Você errou feio, errou rude!")
+            print("Você saiu com um olho roxo e com seu orgulho ferido ;-;")
+            print("Você levou 5 de dano")
+            player_hp += -5
+            print("Você está com {} de hp!".format(player_hp))
+        else:
+            print("Você é quem manja mais de Python, chupa vet")
+            print("Você ganhou a luta! xD")
+            player_hp += 10
+            print("Você ganhou 10 hp como bônus por vencer desse bobão!")
+            print("Você está com {} de hp!".format(player_hp))
+            
+def funacaso2():
+    if acaso_encontro2 == 1:
+        funencontro2()
     
 #game pilot EP1
 print("Você se encontra no meio do saguão de sua universidade, o Insper.")
@@ -284,6 +318,7 @@ elif resposta1 == "cinema":
     if resposta3 == "biblioteca":
         funcontbi()
     elif resposta3 == "filme":
+        funacaso2()
         funfilme()
         resposta4 = pergunta()
         while resposta4 != "insper" and resposta4 != "esperar" and resposta4 != "atestado":
@@ -348,6 +383,19 @@ elif resposta1 == "cinema":
             funcontbi()
         elif resposta4 == "atestado":
             funhospital()
+            if player_hp < 15:
+                print("\033[36mMédico\033[m:Nossa, você está machucado!")
+                time.sleep(2)
+                print("\033[36mMédico\033[m:Deixe eu cuidar de voce!")
+                while player_hp < 15:
+                    player_hp += 1
+                print("\033[36mMédico\033[m:Pronto! Você já está bem melhor!")
+                print("Você está com {} de hp!".format(player_hp))
+                print("\033[36mMédico\033[m:Precisa de mais alguma coisa?")
+                time.sleep(2)
+                funhospital2()
+            else:
+                funhospital2()
             
     
     
